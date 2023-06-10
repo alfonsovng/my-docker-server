@@ -10,9 +10,13 @@ services:
         DEFAULT_PASSWORD: '$$1$$CJQVfAF0$$RAt/dl5h3qCg.mPqtBvrl1'
     hostname: SERVER
     restart: on-failure
+    privileged: true
+    security_opt:
+      - seccomp:unconfined
     command: ["bash", "/root/resources/entrypoint.sh"]
     volumes:
       - ./server/resources:/root/resources
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     networks:
       network_external:
         ipv4_address: 10.3.0.5
@@ -20,11 +24,17 @@ services:
         ipv4_address: 172.28.200.10
 networks:
   network_external:
+    driver: bridge
     ipam: 
       config:
         - subnet: 10.3.0.0/24
           gateway: 10.3.0.1
+    driver_opts:
+      com.docker.network.container_iface_prefix: eth
   network_internal:
+    driver: bridge
     ipam: 
       config:
         - subnet: 172.28.200.0/24
+    driver_opts:
+      com.docker.network.container_iface_prefix: eth

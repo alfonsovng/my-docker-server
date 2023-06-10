@@ -1,10 +1,13 @@
 FROM ubuntu:22.04
 
 RUN yes | unminimize && \
-    apt-get install -y sudo openssh-server iproute2 iputils-ping nano man-db && \
+    apt-get install -y sudo openssh-server iproute2 iputils-ping nano man-db rsyslog dialog apt-utils && \
     service ssh start && \
+    printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d && \
+    ln -s /etc/init.d/named /etc/init.d/bind9 && \
     # promt en vermell (01;31m)
-    echo 'export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "'  >> /root/.bash_profile
+    echo 'export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "'  >> /root/.bash_profile && \
+    echo "RUNLEVEL=1" >> /etc/environment
 
 ARG DEFAULT_USER
 ARG DEFAULT_PASSWORD

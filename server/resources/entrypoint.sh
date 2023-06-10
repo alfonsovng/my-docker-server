@@ -27,5 +27,8 @@ echo ""
 echo "Fes Ctrl+C per tancar el contenidor"
 echo ""
 
+# INICIO EL SYSLOG
+rsyslogd
+
 # executa el servei SSH
 exec /usr/sbin/sshd -D
