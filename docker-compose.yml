@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: ./server
+      args:
+        DEFAULT_USER: 'alumne'
+        # resultat de la comanda 'openssl passwd -1 alumne'
+        # s'ha de possar el dollar per duplicat
+        DEFAULT_PASSWORD: '$$1$$CJQVfAF0$$RAt/dl5h3qCg.mPqtBvrl1'
+    hostname: SERVER
+    restart: on-failure
+    command: ["bash", "/root/resources/entrypoint.sh"]
+    volumes:
+      - ./server/resources:/root/resources
+    networks:
+      network_external:
+        ipv4_address: 10.3.0.5
+      network_internal:
+        ipv4_address: 172.28.200.10
+networks:
+  network_external:
+    ipam: 
+      config:
+        - subnet: 10.3.0.0/24
+          gateway: 10.3.0.1
+  network_internal:
+    ipam: 
+      config:
+        - subnet: 172.28.200.0/24
