@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 RUN yes | unminimize && \
-    apt-get install -y sudo openssh-server iproute2 iputils-ping nano man-db rsyslog dialog apt-utils && \
+    apt-get install -y sudo openssh-server iproute2 iputils-ping nano man-db rsyslog dialog apt-utils bash-completion && \
     service ssh start && \
     printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d && \
     ln -s /etc/init.d/named /etc/init.d/bind9 && \
