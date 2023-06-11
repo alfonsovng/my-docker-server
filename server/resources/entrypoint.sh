@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# INICIO EL SYSLOG
+rsyslogd
+
 # Comprova si ja hi ha unes "keys" generades
 echo ""
 echo "-----------------------------------"
@@ -26,9 +29,6 @@ echo "Ja pots connectar-te al contenidor executant: ssh ${DEFAULT_USER}@${IP4}"
 echo ""
 echo "Fes Ctrl+C per tancar el contenidor"
 echo ""
-
-# INICIO EL SYSLOG
-rsyslogd
 
 # executa el servei SSH
 exec /usr/sbin/sshd -D

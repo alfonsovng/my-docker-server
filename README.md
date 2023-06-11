@@ -57,6 +57,14 @@ ATENCIÓ: Explorar el driver ipvlan: https://docs.docker.com/network/drivers/ipv
 
 Cap problema
 
+## MARIADB
+
+Cap problema, però s'ha d'anar en compte pq no es pot fer servir systemctl, és a dir:
+
+    systemctl enable --now mariadb
+
+No funciona. Cal fer-ho mitjançant la comanda service.
+
 ## VSFTPD
 
 Cap problema
@@ -64,26 +72,3 @@ Cap problema
 ## SQUID
 
 Cap problema
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-apt-get install bind9
-
-systemctl enable bind9
-
-

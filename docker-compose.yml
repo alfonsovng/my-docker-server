@@ -17,6 +17,7 @@ services:
     volumes:
       - ./server/resources:/root/resources
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /etc/localtime:/etc/localtime:ro
     networks:
       network_external:
         ipv4_address: 10.3.0.5
