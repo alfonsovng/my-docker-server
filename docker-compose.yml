@@ -33,7 +33,7 @@ networks:
     driver_opts:
       com.docker.network.container_iface_prefix: eth
   network_internal:
-    driver: bridge
+    driver: macvlan
     ipam: 
       config:
         - subnet: 172.28.200.0/24

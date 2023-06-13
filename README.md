@@ -50,9 +50,6 @@ A l'hora de posar la targeta de targa a /etc/default/isc-dhcp-server, si la targ
 
 s'ha de posar "eth0", sense l'arroba
 
-
-ATENCIÓ: Explorar el driver ipvlan: https://docs.docker.com/network/drivers/ipvlan/
-
 ## APACHE2 + PHP
 
 Cap problema

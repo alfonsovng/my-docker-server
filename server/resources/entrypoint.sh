@@ -22,10 +22,11 @@ fi
 DEFAULT_USER=$(ls -1 /home/)
 # https://unix.stackexchange.com/a/402160
 IP4=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
+HOSTNAME=$(hostname)
 echo ""
 echo "-----------------------------------"
 echo ""
-echo "Ja pots connectar-te al contenidor executant: ssh ${DEFAULT_USER}@${IP4}"
+echo "Ja pots connectar-te al contenidor ${HOSTNAME} executant: ssh ${DEFAULT_USER}@${IP4}"
 echo ""
 echo "Fes Ctrl+C per tancar el contenidor"
 echo ""
